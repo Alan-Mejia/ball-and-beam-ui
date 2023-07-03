@@ -1,38 +1,117 @@
-.App {
+.ruler-container {
+  margin-top: 400px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+  animation: barRotation .8s infinite alternate;
+  position: relative;
+  
+  width: fit-content;
+  margin: 200px auto 40px auto;
+  
+}
+
+.ruler {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.ruler h2 {
+  font-size: 24px;
+  margin-bottom: 16px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.cm-mark {
+  width: 35px;
+  height: 60px;
+  background-color: #fff;
+  border: 1px solid #000;
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.selected {
+  background-color: #93b309;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@keyframes barRotation {
+  from{
+    transform: rotateZ(var(--rotation-from-angle, 5deg));
+    transform-origin: left center;
   }
-  to {
-    transform: rotate(360deg);
+  to{
+    transform: rotateZ(var(--rotation-to-angle, -7.5deg));
+    transform-origin: left center;
   }
+}
+
+
+/* From -20 to 50 */
+.distance-sensor {
+  text-align: center;
+}
+
+.sensor-container {
+  height: 250px;
+  width: 50px;
+  border: 2px solid black;
+  position: relative;
+  background-color: #d3d3d3;
+  border-radius: 10px;
+}
+.sensor-indicator {
+  position: absolute;
+  width: calc(var(--infrared-distance, 11px)*35);
+  height: 6px;
+  left: 52px;
+  top: 15px;
+  background-color: red;
+}
+
+.distance-value {
+  font-size: 20px;
+}
+
+input[type='range'] {
+  width: 200px;
+  margin-top: 20px;
+}
+
+.ball{
+  width: 140px;
+  height: 140px;
+  border-radius: 100%;
+  background-color: aqua;
+  position: absolute;
+  bottom: 158px;
+  left: calc((var(--ball-distance-sensor, 11px) * 35 + (var(--ball-distance-sensor, 11px) * 1) - 1px));
+}
+
+.mm-container{
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  width: 816px;
+  height: 45px;
+  left: 53px;
+  top: 180px;
+  text-align: center;
+  justify-content: flex-end;
+}
+
+.mm-mark{
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+  width: 80%;
+  border: 1px solid black;
+  cursor: pointer;
+
 }
